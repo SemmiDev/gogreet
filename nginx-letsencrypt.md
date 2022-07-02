@@ -24,9 +24,10 @@ Install docker & docker compose
 - sudo apt install docker-ce
 - sudo systemctl status docker
 - docker --version
-- sudo apt-get install docker compose-plugin
-- apt-cache madison docker compose-plugin
-- sudo apt-get install docker compose-plugin=`version`
+- sudo apt-get update
+- sudo apt-get install docker-compose-plugin
+- apt-cache madison docker-compose-plugin
+- sudo apt-get install docker-compose-plugin=`version`
 - docker compose version
 
 Mengeksekusi Perintah Docker Tanpa Sudo
