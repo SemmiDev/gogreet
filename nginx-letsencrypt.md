@@ -24,9 +24,9 @@ Install docker & docker compose
 - sudo apt install docker-ce
 - sudo systemctl status docker
 - docker --version
-- sudo apt-get install docker-compose-plugin
-- apt-cache madison docker-compose-plugin
-- sudo apt-get install docker-compose-plugin=`version`
+- sudo apt-get install docker compose-plugin
+- apt-cache madison docker compose-plugin
+- sudo apt-get install docker compose-plugin=`version`
 - docker compose version
 
 Mengeksekusi Perintah Docker Tanpa Sudo
@@ -67,11 +67,10 @@ server {
                 root /var/www/html;
         }
 }
-
 ```
 
-- nano docker-compose.yml
-```docker-compose
+- nano docker compose.yml
+```docker compose
 version: '3'
 
 services:
@@ -123,12 +122,12 @@ networks:
     driver: bridge
 ```
 
-- docker-compose up -d
-- docker-compose ps
-- docker-compose logs `service_name`
-- docker-compose exec webserver ls -la /etc/letsencrypt/live
-- nano docker-compose.yml
-``` docker-compose
+- docker compose up -d
+- docker compose ps
+- docker compose logs `service_name`
+- docker compose exec webserver ls -la /etc/letsencrypt/live
+- nano docker compose.yml
+```
 version: '3'
 
 services:
@@ -167,7 +166,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email sammy@example.com --agree-tos --no-eff-email --force-renewal -d sammidev.codes  -d www.sammidev.codes 
+    command: certonly --webroot --webroot-path=/var/www/html --email sammidev4@gmail.com --agree-tos --no-eff-email --force-renewal -d sammidev.codes  -d www.sammidev.codes 
 
 volumes:
   certbot-etc:
@@ -179,10 +178,10 @@ networks:
   app-network:
     driver: bridge
 ```
-- docker-compose up --force-recreate --no-deps certbot
-- docker-compose stop webserver
+- docker compose up --force-recreate --no-deps certbot
+- docker compose stop webserver
 - mkdir dhparam
-- sudo openssl dhparam -out /home/sammidev/go-greet/dhparam/dhparam-2048.pem 2048
+- sudo openssl dhparam -out /home/sammidev/gogreet/dhparam/dhparam-2048.pem 2048
 - rm nginx-conf/nginx.conf
 - nano nginx-conf/nginx.conf
 ```nginx
@@ -247,7 +246,7 @@ server {
 }
 ```
 - nano docker-compose.yml
-```docker-compose
+```docker compose
 version: '3'
 
 services:
@@ -288,7 +287,7 @@ services:
       - web-root:/var/www/html
     depends_on:
       - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email sammy@example.com --agree-tos --no-eff-email --force-renewal -d sammidev.codes  -d www.sammidev.codes 
+    command: certonly --webroot --webroot-path=/var/www/html --email sammidev4@gmail.com --agree-tos --no-eff-email --force-renewal -d sammidev.codes  -d www.sammidev.codes 
 
 volumes:
   certbot-etc:
@@ -299,23 +298,22 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/sammidev/go-greet/dhparam/
+      device: /home/sammidev/gogreet/dhparam/
       o: bind
 
 networks:
   app-network:
     driver: bridge
 ```
-- docker-compose up -d --force-recreate --no-deps webserver
-- docker-compose ps
+- docker compose up -d --force-recreate --no-deps webserver
+- docker compose ps
 - try to access!!
-
 
 - nano ssl_renew.sh
 ```bash
 #!/bin/bash
 
-COMPOSE="/usr/local/bin/docker-compose --no-ansi"
+COMPOSE="/usr/local/bin/docker compose --no-ansi"
 DOCKER="/usr/bin/docker"
 
 cd /home/sammy/node_project/
