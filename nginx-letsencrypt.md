@@ -70,7 +70,7 @@ server {
 }
 ```
 
-- nano docker compose.yml
+- nano docker-compose.yml
 ```docker compose
 version: '3'
 
@@ -127,7 +127,7 @@ networks:
 - docker compose ps
 - docker compose logs `service_name`
 - docker compose exec webserver ls -la /etc/letsencrypt/live
-- nano docker compose.yml
+- nano docker-compose.yml
 ```
 version: '3'
 
