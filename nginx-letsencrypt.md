@@ -317,7 +317,7 @@ networks:
 COMPOSE="/usr/local/bin/docker compose --no-ansi"
 DOCKER="/usr/bin/docker"
 
-cd /home/sammy/node_project/
+cd /home/sammidev/gogreet/
 $COMPOSE run certbot renew && $COMPOSE kill -s SIGHUP webserver
 $DOCKER system prune -af
 ```
@@ -327,5 +327,5 @@ $DOCKER system prune -af
 
 To run the script every day at noon
 ```crob
-0 12 * * * /home/sammidev/go-greet/ssl_renew.sh >> /var/log/cron.log 2>&1
+0 12 * * * /home/sammidev/gogreet/ssl_renew.sh >> /var/log/cron.log 2>&1
 ```
