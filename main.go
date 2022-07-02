@@ -8,13 +8,15 @@ import (
 func greet(w http.ResponseWriter, r *http.Request) {
 	name := r.URL.Query().Get("name")
 	if name == "" {
-		name = "kamuu"
+		name = "Kamuu"
 	}
-	fmt.Fprintf(w, "hi %s!! have a nice day", name)
+	name += " 😊"
+	resp := fmt.Sprintf(`<div style='text-align: center;'> <h1>Hii %s</h1> <p><i>have a nice day.</i></p> </div>`, name)
+	fmt.Fprint(w, resp)
 }
 
 func main() {
-	http.HandleFunc("/api/greet", greet)
+	http.HandleFunc("/greet", greet)
 	fmt.Println("server running on port 3030")
 	http.ListenAndServe(":3030", nil)
 }
