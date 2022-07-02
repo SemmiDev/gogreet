@@ -42,7 +42,7 @@ Testing the Golang App
 - cat Dockerfile
 - docker build -t go-demo .
 - docker images
-- docker run --name go-demo -p 80:3030 -d go-demo
+- docker run --name go-demo -p 80:8080 -d go-demo
 - docker ps
 - docker stop `CONTAINER ID`
 - docker system prune -a
